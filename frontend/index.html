@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Chatbot</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+  }
+
+  /* Floating button */
+  #chat-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    font-size: 26px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  }
+
+  /* Chat window */
+  #chatbox {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    width: 320px;
+    height: 420px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+    display: none;
+    flex-direction: column;
+  }
+
+  #chat-header {
+    background: #2563eb;
+    color: white;
+    padding: 12px;
+    border-radius: 10px 10px 0 0;
+    font-weight: bold;
+  }
+
+  #messages {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;
+    font-size: 14px;
+  }
+
+  .msg {
+    margin-bottom: 8px;
+  }
+
+  .user {
+    text-align: right;
+    color: #111;
+  }
+
+  .bot {
+    text-align: left;
+    color: #2563eb;
+  }
+
+  #input-area {
+    display: flex;
+    border-top: 1px solid #ddd;
+  }
+
+  #input-area input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    outline: none;
+  }
+
+  #input-area button {
+    padding: 10px 15px;
+    border: none;
+    background: #2563eb;
+    color: white;
+    cursor: pointer;
+  }
+</style>
+</head>
+
+<body>
+
+<button id="chat-toggle">💬</button>
+
+<div id="chatbox">
+  <div id="chat-header">Ask MakerSpace Masters</div>
+  <div id="messages"></div>
+  <div id="input-area">
+    <input type="text" id="userInput" placeholder="Type a message..." />
+    <button onclick="sendMessage()">Send</button>
+  </div>
+</div>
+
+<script>
+const chatToggle = document.getElementById("chat-toggle");
+const chatbox = document.getElementById("chatbox");
+const messages = document.getElementById("messages");
+const input = document.getElementById("userInput");
+
+chatToggle.onclick = () => {
+  chatbox.style.display = chatbox.style.display === "flex" ? "none" : "flex";
+};
+
+async function sendMessage() {
+  const text = input.value.trim();
+  if (!text) return;
+
+  messages.innerHTML += `<div class="msg user"><b>You:</b> ${text}</div>`;
+  input.value = "";
+  messages.scrollTop = messages.scrollHeight;
+
+  try {
+    const res = await fetch("http://127.0.0.1:8000/chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ message: text })
+    });
+
+    const data = await res.json();
+    messages.innerHTML += `<div class="msg bot"><b>Bot:</b> ${data.reply}</div>`;
+    messages.scrollTop = messages.scrollHeight;
+  } catch (err) {
+    messages.innerHTML += `<div class="msg bot">Bot: Server not available</div>`;
+  }
+}
+
+input.addEventListener("keypress", e => {
+  if (e.key === "Enter") sendMessage();
+});
+</script>
+
+</body>
+</html>

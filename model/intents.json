@@ -1,0 +1,19 @@
+{
+  "intents": [
+    {
+      "tag": "greeting",
+      "patterns": ["Hi", "Hello", "Hey"],
+      "responses": ["Hello! How can I help you?"]
+    },
+    {
+      "tag": "about",
+      "patterns": ["What is this website?", "Tell me about the site"],
+      "responses": ["This website provides learning resources."]
+    },
+    {
+      "tag": "contact",
+      "patterns": ["How can I contact?", "Support email"],
+      "responses": ["Email us at support@site.com"]
+    }
+  ]
+}
