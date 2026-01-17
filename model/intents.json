@@ -2,8 +2,39 @@
   "intents": [
     {
       "tag": "greeting",
-      "patterns": ["Hi", "Hello", "Hey"],
-      "responses": ["Hello! How can I help you?"]
+      "patterns": [
+        "hi",
+        "hello",
+        "hey",
+        "Namaste"
+      ],
+      "responses": [
+        "Hello! Ask me anything about Python or Django."
+      ]
+    },
+
+    {
+      "tag": "python_intro",
+      "patterns": [
+        "what is python",
+        "explain python",
+        "python language"
+      ],
+      "responses": [
+        "Python is a high-level,Dynamicaly typed,interpreted programming language known for its simplicity and readability."
+      ]
+    },
+
+    {
+      "tag": "python_install",
+      "patterns": [
+        "how to install python",
+        "install python",
+        "python installation"
+      ],
+      "responses": [
+        "Download Python from python.org or install using a package manager like Homebrew or apt."
+      ]
     },
     {
       "tag": "about",
