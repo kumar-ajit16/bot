@@ -1,5 +1,6 @@
 {
   "intents": [
+
     {
       "tag": "greeting",
       "patterns": [
@@ -36,15 +37,162 @@
         "Download Python from python.org or install using a package manager like Homebrew or apt."
       ]
     },
+
     {
-      "tag": "about",
-      "patterns": ["What is this website?", "Tell me about the site"],
-      "responses": ["This website provides learning resources."]
+      "tag": "python_variables",
+      "patterns": [
+        "what is variable in python",
+        "python variables",
+        "define variable"
+      ],
+      "responses": [
+        "Variables in Python are used to store data values and are created when you assign a value."
+      ]
     },
+
     {
-      "tag": "contact",
-      "patterns": ["How can I contact?", "Support email"],
-      "responses": ["Email us at support@site.com"]
+      "tag": "python_datatypes",
+      "patterns": [
+        "python data types",
+        "what are data types in python",
+        "types in python"
+      ],
+      "responses": [
+        "Common Python data types are int, float, string, list, tuple, set, and dictionary."
+      ]
+    },
+
+    {
+      "tag": "python_loops",
+      "patterns": [
+        "loops in python",
+        "for loop in python",
+        "while loop in python"
+      ],
+      "responses": [
+        "Python supports for loops and while loops to repeat tasks."
+      ]
+    },
+
+    {
+      "tag": "python_functions",
+      "patterns": [
+        "python functions",
+        "define function in python",
+        "what is function"
+      ],
+      "responses": [
+        "A function in Python is a block of reusable code defined using the def keyword."
+      ]
+    },
+
+    {
+      "tag": "python_oops",
+      "patterns": [
+        "oops in python",
+        "python class and object",
+        "object oriented python"
+      ],
+      "responses": [
+        "OOP in Python includes concepts like class, object, inheritance, polymorphism, and encapsulation."
+      ]
+    },
+
+    {
+      "tag": "python_exceptions",
+      "patterns": [
+        "exception handling in python",
+        "try except python",
+        "python error handling"
+      ],
+      "responses": [
+        "Exception handling in Python is done using try, except, else, and finally blocks."
+      ]
+    },
+
+    {
+      "tag": "django_intro",
+      "patterns": [
+        "what is django",
+        "explain django",
+        "django framework"
+      ],
+      "responses": [
+        "Django is a high-level Python web framework used to build secure and scalable web applications."
+      ]
+    },
+
+    {
+      "tag": "django_install",
+      "patterns": [
+        "how to install django",
+        "install django",
+        "django installation"
+      ],
+      "responses": [
+        "Install Django using pip: pip install django"
+      ]
+    },
+
+    {
+      "tag": "django_project",
+      "patterns": [
+        "create django project",
+        "start django project",
+        "django startproject"
+      ],
+      "responses": [
+        "Create a project using: django-admin startproject projectname"
+      ]
+    },
+
+    {
+      "tag": "django_app",
+      "patterns": [
+        "create django app",
+        "start django app",
+        "django startapp"
+      ],
+      "responses": [
+        "Create an app using: python manage.py startapp appname"
+      ]
+    },
+
+    {
+      "tag": "django_runserver",
+      "patterns": [
+        "run django server",
+        "start django server",
+        "django runserver"
+      ],
+      "responses": [
+        "Run the development server using: python manage.py runserver"
+      ]
+    },
+
+    {
+      "tag": "django_models",
+      "patterns": [
+        "django models",
+        "what are django models",
+        "define model in django"
+      ],
+      "responses": [
+        "Django models define the database structure using Python classes."
+      ]
+    },
+
+    {
+      "tag": "django_migrations",
+      "patterns": [
+        "django migrations",
+        "make migrations",
+        "migrate database"
+      ],
+      "responses": [
+        "Use: python manage.py makemigrations and python manage.py migrate"
+      ]
     }
+
   ]
 }

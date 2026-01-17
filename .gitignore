@@ -1,36 +1,15 @@
 # Python
 __pycache__/
 *.pyc
-*.pyo
 
-# Virtual env
-bin/
-lib/
-pyvenv.cfg
+
+# Virtual env (DO NOT PUSH)
 .venv/
-
-# ML models
-*.h5
-*.pkl
+venv/
+env/
 
 # OS
 .DS_Store
-# macOS
-.DS_Store
 
-# Python
-__pycache__/
-*.pyc
-*.pyo
-
-# Virtual environment (CRITICAL)
-bin/
-lib/
-pyvenv.cfg
-
-# Models (optional but recommended)
-*.h5
-*.pkl
-
-# Env
+# Env files
 .env
