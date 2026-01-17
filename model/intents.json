@@ -1,19 +1,98 @@
 {
   "intents": [
 
+   {
+  "tag": "smalltalk_howareyou",
+  "patterns": [
+    "how are you",
+    "how are you doing",
+    "are you fine",
+    "how's it going"
+  ],
+  "responses": [
+    "I'm doing great 😊 How can I help you today?",
+    "I'm good! What would you like to learn?",
+    "All good here 👍 What can I do for you?"
+  ]
+},
+{
+  "tag": "smalltalk_thanks",
+  "patterns": [
+    "thanks",
+    "thank you",
+    "thanks a lot",
+    "thank you so much"
+  ],
+  "responses": [
+    "You're welcome 😊",
+    "No problem! Happy to help 👍",
+    "Anytime 😄"
+  ]
+},
+{
+  "tag": "smalltalk_bye",
+  "patterns": [
+    "bye",
+    "goodbye",
+    "see you",
+    "see you later"
+  ],
+  "responses": [
+    "Bye 👋 Have a great day!",
+    "See you soon 😊",
+    "Take care! 👋"
+  ]
+}
+,
     {
-      "tag": "greeting",
-      "patterns": [
-        "hi",
-        "hello",
-        "hey",
-        "Namaste"
-      ],
-      "responses": [
-        "Hello! Ask me anything about Python or Django."
-      ]
-    },
+  "tag": "greeting",
+  "patterns": [
+    "hi",
+    "hello",
+    "hey",
+    "hey there",
+    "hello there",
+    "hi there",
+    "good morning",
+    "good afternoon",
+    "good evening",
+    "how are you",
+    "how are you doing",
+    "what's up",
+    "whats up",
+    "sup",
+    "hey buddy",
+    "hey bro",
+    "namaste",
+    "hi how are you",
+    "hello how are you",
+    "hey how are you",
+    "is anyone there",
+    "are you there"
+  ],
+  "responses": [
+    "Hello 👋 How can I help you with Python or Django today?",
+    "Hi there! 😊 What would you like to learn?",
+    "Hey! Ask me anything about Python or Django.",
+    "Hello! I'm here to help you with Python and Django."
+  ]
+},
 
+    {
+  "tag": "python_only",
+  "patterns": ["python"],
+  "responses": [
+    "Do you want to learn Python basics, installation, or examples?"
+  ]
+},
+{
+  "tag": "django_only",
+  "patterns": ["django"],
+  "responses": [
+    "What do you want to know about Django? Installation, models, or APIs?"
+  ]
+}
+,
     {
       "tag": "python_intro",
       "patterns": [

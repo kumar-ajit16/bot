@@ -1,15 +1,67 @@
+# =========================
 # Python
+# =========================
 __pycache__/
-*.pyc
+*.py[cod]
+*.pyo
+*.pyd
+*.so
 
-
-# Virtual env (DO NOT PUSH)
+# =========================
+# Virtual Environment
+# =========================
 .venv/
 venv/
 env/
+ENV/
 
-# OS
+# =========================
+# OS files
+# =========================
 .DS_Store
+Thumbs.db
 
-# Env files
+# =========================
+# IDE / Editors
+# =========================
+.vscode/
+.idea/
+*.iml
+
+# =========================
+# Logs
+# =========================
+*.log
+
+# =========================
+# Model & Training Artifacts
+# =========================
+model/*.h5
+model/*.pkl
+
+# (keep intents.json tracked)
+!model/intents.json
+
+# =========================
+# FastAPI / Uvicorn
+# =========================
+*.pid
+uvicorn.log
+
+# =========================
+# Jupyter / ML
+# =========================
+.ipynb_checkpoints/
+
+# =========================
+# Environment variables
+# =========================
 .env
+
+# =========================
+# Build / Cache
+# =========================
+.build/
+dist/
+*.egg-info/
+__pypackages__/

@@ -79,17 +79,28 @@ def chat(req: ChatRequest):
     user_message = req.message.strip()
     name = extract_name(user_message)
 
+    tokens = tokenize(user_message)
+
+    if len(tokens) == 1:
+        if tokens[0] == "python":
+            return {"reply": "What do you want to know about Python?"}
+        if tokens[0] == "django":
+            return {"reply": "What do you want to know about Django?"}
+
+  
     if not has_known_words(user_message):
-        return {"reply": "Bhenke loude dhangg se type karr."}
+        return {"reply": "Sorry, I didn’t understand that 😅 Can you rephrase?"}
 
     tag = predict_class(user_message)
 
     if not tag:
-        return {"reply": "Bhenke loude dhangg se type karr."}
+        return {"reply": "Sorry, I didn’t understand that 😅 Can you rephrase?"}
 
     reply = get_response(tag)
+
+
     if name and tag == "greeting":
-        reply = f"Hello {name}! How can I help you?"
+        reply = f"Hi {name} 😊 How can I help you today?"
 
     return {"reply": reply}
 
