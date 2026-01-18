@@ -6,6 +6,7 @@ intents:
   - goodbye
   - joke
   - rasa_info
+  - ask_time
 
 responses:
   utter_greet:
@@ -13,6 +14,7 @@ responses:
 
   utter_how_are_you:
     - text: "I'm doing great 😊 How can I help you today?"
+    - text: "All good here 👍 What can I do for you?"
 
   utter_goodbye:
     - text: "Bye 👋 Have a great day!"
@@ -20,8 +22,8 @@ responses:
   utter_rasa_info:
     - text: >
         Rasa is an open-source conversational AI framework used to build smart chatbots.
-        It understands user intent, remembers context, and replies in a human-like way.
-        Rasa works offline and is widely used in production systems.
+        It understands user intent, manages context, and works completely offline.
 
 actions:
   - action_tell_joke
+  - action_tell_datetime

@@ -26,3 +26,8 @@ rules:
   steps:
     - intent: rasa_info
     - action: utter_rasa_info
+
+- rule: tell date and time
+  steps:
+    - intent: ask_time
+    - action: action_tell_datetime
