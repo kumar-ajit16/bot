@@ -32,6 +32,8 @@ Thumbs.db
 # Logs
 # =========================
 *.log
+*.pid
+uvicorn.log
 
 # =========================
 # Environment variables
@@ -47,21 +49,27 @@ dist/
 __pypackages__/
 
 # =========================
-# Jupyter / ML
+# Jupyter
 # =========================
 .ipynb_checkpoints/
 
 # =========================
-# ML Model Artifacts (FastAPI bot)
+# FastAPI ML model artifacts
 # =========================
-model/*.h5
-model/*.pkl
+bot/model/*.h5
+bot/model/*.pkl
 
 # Keep training data
-!model/intents.json
+!bot/model/intents.json
 
 # =========================
-# RASA (VERY IMPORTANT)
+# spaCy cache
+# =========================
+.cache/
+.spacy/
+
+# =========================
+# RASA (generated / runtime files)
 # =========================
 rasa_bot/models/
 rasa_bot/.rasa/
@@ -71,8 +79,14 @@ rasa_bot/events.db
 rasa_bot/*.db
 rasa_bot/*.log
 
-# ======================
-# FastAPI / Uvicorn
 # =========================
-*.pid
-uvicorn.log
+# Rasa action bytecode
+# =========================
+rasa_bot/actions/__pycache__/
+
+# =========================
+# Frontend build (if added later)
+# =========================
+bot/frontend/node_modules/
+bot/frontend/dist/
+bot/frontend/build/
