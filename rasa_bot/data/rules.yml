@@ -1,0 +1,28 @@
+version: "3.1"
+
+rules:
+
+- rule: greeting
+  steps:
+    - intent: greet
+    - action: utter_greet
+
+- rule: how are you
+  steps:
+    - intent: how_are_you
+    - action: utter_how_are_you
+
+- rule: tell joke
+  steps:
+    - intent: joke
+    - action: action_tell_joke
+
+- rule: say goodbye
+  steps:
+    - intent: goodbye
+    - action: utter_goodbye
+
+- rule: explain rasa
+  steps:
+    - intent: rasa_info
+    - action: utter_rasa_info

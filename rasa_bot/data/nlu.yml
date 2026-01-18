@@ -1,0 +1,37 @@
+version: "3.1"
+
+nlu:
+
+- intent: greet
+  examples: |
+    - hi
+    - hello
+    - hey
+    - hi there
+
+- intent: how_are_you
+  examples: |
+    - how are you
+    - how are you doing
+    - are you fine
+
+- intent: goodbye
+  examples: |
+    - bye
+    - goodbye
+    - see you
+
+- intent: joke
+  examples: |
+    - tell me a joke
+    - make me laugh
+    - i am bored
+    - say something funny
+
+- intent: rasa_info
+  examples: |
+    - what is rasa
+    - tell me about rasa
+    - explain rasa
+    - rasa framework
+    - how does rasa work
