@@ -7,6 +7,10 @@ import numpy as np
 from fastapi import FastAPI
 from pydantic import BaseModel
 from keras.models import load_model
+import pyjokes
+import requests
+
+
 
 def extract_name(text: str):
     match = re.search(r"\b(i am|i'm|my name is)\s+([a-zA-Z]+)", text.lower())
@@ -56,7 +60,7 @@ def predict_class(sentence: str):
     bow = bag_of_words(sentence)
     res = model.predict(np.array([bow]), verbose=0)[0]
 
-    ERROR_THRESHOLD = 0.4 
+    ERROR_THRESHOLD = 0.7
 
     results = [(classes[i], r) for i, r in enumerate(res) if r > ERROR_THRESHOLD]
     results.sort(key=lambda x: x[1], reverse=True)
@@ -74,12 +78,48 @@ def get_response(tag: str):
 class ChatRequest(BaseModel):
     message: str
 
+def ask_rasa(message: str):
+    try:
+        res = requests.post(
+            "http://localhost:5005/webhooks/rest/webhook",
+            json={"sender": "user", "message": message},
+            timeout=1.5  
+        )
+        if res.ok and res.json():
+            return res.json()[0]["text"]
+    except Exception:
+        pass
+    return None
+
+
+
 @app.post("/chat")
 def chat(req: ChatRequest):
-    user_message = req.message.strip()
-    name = extract_name(user_message)
-
+    user_message = req.message.strip().lower()
     tokens = tokenize(user_message)
+
+    SMALL_TALK_PHRASES = [
+    "how are you",
+    "how are you doing",
+    "what is rasa",
+    "tell me about rasa",
+    "explain rasa",
+    "what is the time",
+    "what is time",
+    "current time",
+    "current date",
+    "date and time",
+    "bye",
+    "goodbye"
+]
+
+    if any(p in user_message for p in SMALL_TALK_PHRASES):
+        rasa_reply = ask_rasa(user_message)
+        if rasa_reply:
+            return {"reply": rasa_reply}
+
+    if any(w in tokens for w in ["joke", "jokes", "funny", "laugh", "bored"]):
+        return {"reply": pyjokes.get_joke(category="neutral", language="en")}
 
     if len(tokens) == 1:
         if tokens[0] == "python":
@@ -87,22 +127,17 @@ def chat(req: ChatRequest):
         if tokens[0] == "django":
             return {"reply": "What do you want to know about Django?"}
 
-  
-    if not has_known_words(user_message):
-        return {"reply": "Sorry, I didn’t understand that 😅 Can you rephrase?"}
-
+    name = extract_name(user_message)
     tag = predict_class(user_message)
 
     if not tag:
-        return {"reply": "Sorry, I didn’t understand that 😅 Can you rephrase?"}
+        return {"reply": "Sorry, I didn’t understand that "}
 
     reply = get_response(tag)
 
 
     if name and tag == "greeting":
-        reply = f"Hi {name} 😊 How can I help you today?"
+        reply = f"Hi {name}  How can I help you today?"
 
     return {"reply": reply}
-
-
 

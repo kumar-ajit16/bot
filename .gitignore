@@ -34,26 +34,6 @@ Thumbs.db
 *.log
 
 # =========================
-# Model & Training Artifacts
-# =========================
-model/*.h5
-model/*.pkl
-
-# (keep intents.json tracked)
-!model/intents.json
-
-# =========================
-# FastAPI / Uvicorn
-# =========================
-*.pid
-uvicorn.log
-
-# =========================
-# Jupyter / ML
-# =========================
-.ipynb_checkpoints/
-
-# =========================
 # Environment variables
 # =========================
 .env
@@ -65,3 +45,34 @@ uvicorn.log
 dist/
 *.egg-info/
 __pypackages__/
+
+# =========================
+# Jupyter / ML
+# =========================
+.ipynb_checkpoints/
+
+# =========================
+# ML Model Artifacts (FastAPI bot)
+# =========================
+model/*.h5
+model/*.pkl
+
+# Keep training data
+!model/intents.json
+
+# =========================
+# RASA (VERY IMPORTANT)
+# =========================
+rasa_bot/models/
+rasa_bot/.rasa/
+rasa_bot/.cache/
+rasa_bot/results/
+rasa_bot/events.db
+rasa_bot/*.db
+rasa_bot/*.log
+
+# ======================
+# FastAPI / Uvicorn
+# =========================
+*.pid
+uvicorn.log

@@ -73,4 +73,4 @@ model.compile(
 model.fit(train_x, train_y, epochs=200, batch_size=5, verbose=1)
 
 model.save(os.path.join(MODEL_DIR, "chatbot_ajit.h5"))
-print("✅ Model created successfully")
+print("Model created successfully")
