@@ -8,7 +8,7 @@ pipeline:
 - name: LexicalSyntacticFeaturizer
 - name: CountVectorsFeaturizer
 - name: DIETClassifier
-  epochs: 50
+  epochs: 100
 
 policies:
 - name: RulePolicy

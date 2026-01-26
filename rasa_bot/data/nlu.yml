@@ -4,14 +4,30 @@ nlu:
 
 - intent: ask_time
   examples: |
-    - what is the time
+    - time
+    - date
+    - now
+    - today
     - current time
+    - what is the time
     - tell me the time
     - what time is it
     - current date and time
     - today's date
     - what is the date
     - what is the date today
+    - time please
+    - what's the time now
+    - date today
+
+- intent: joke
+  examples: |
+    - joke
+    - funny
+    - tell me a joke
+    - make me laugh
+    - i am bored
+    - say something funny
 
 - intent: greet
   examples: |
@@ -24,6 +40,7 @@ nlu:
   examples: |
     - how are you
     - how are you doing
+    - how are
     - are you fine
 
 - intent: goodbye
@@ -31,13 +48,6 @@ nlu:
     - bye
     - goodbye
     - see you
-
-- intent: joke
-  examples: |
-    - tell me a joke
-    - make me laugh
-    - i am bored
-    - say something funny
 
 - intent: rasa_info
   examples: |

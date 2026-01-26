@@ -7,22 +7,25 @@ from typing import Any, Text, List, Dict
 from datetime import datetime
 
 class ActionTellJoke(Action):
-
     def name(self) -> Text:
         return "action_tell_joke"
 
-    def run(
-        self,
-        dispatcher: CollectingDispatcher,
-        tracker: Tracker,
-        domain: DomainDict,
-    ) -> List[Dict[Text, Any]]:
-
+    def run(self, dispatcher, tracker, domain):
         joke = pyjokes.get_joke(category="neutral", language="en")
-        dispatcher.utter_message(text=joke)
+        dispatcher.utter_message(text=f"😂 {joke}")
         return []
 
+
 class ActionTellDateTime(Action):
+    def name(self):
+        return "action_tell_datetime"
+
+    def run(self, dispatcher, tracker, domain):
+        now = datetime.now()
+        formatted = now.strftime("%A, %d %B %Y, %I:%M %p")
+        dispatcher.utter_message(text=f"🕒 {formatted}")
+        return []
+
     def name(self):
         return "action_tell_datetime"
 
